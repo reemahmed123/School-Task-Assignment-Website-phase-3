@@ -1,0 +1,58 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="" content="">
+    <title>Sign Up page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/signup_page.css' %}">
+    
+</head>
+{% block content %}
+<body>
+    <h1> School Task Assignment Website </h1>
+
+    <div class="form" >
+        {% if userExist %}
+        <script>
+            alert("{{message}}");
+        </script>
+        {% endif %}
+        <h2>Sign up</h2>
+
+        <form  id="signupForm" method="post" >
+            {% csrf_token %}
+
+            <input type="text" id="username" placeholder="Username" name="username" required><br>
+           
+            
+            <input type="password" id="password" placeholder="Password" name="password" required><br>
+            
+            
+            <input type="password" id="confirm password" placeholder="Confirm password" required><br>
+           
+            
+            <input type="email" id="email" placeholder="Email" name="email" required><br>
+           
+            <div>
+              <label>Sign as:</label>
+              <select name="status" id="is_admin" >
+                 <option value="admin" selected> admin</option>
+                 <option value="teacher"> teacher</option>
+              </select>
+            </div><br>
+
+            <input type="submit"  id = "submit" value="Sign Up">
+
+            <p>
+                Already have an account? <a href="{% url 'login' %}"> Login</a>
+            </p>
+            
+        </form>
+       
+    </div>
+    
+</body>
+{% load static %}
+    <script src = "{% static 'js/signup_page.js' %}" ></script>
+{% endblock content %}
+</html >

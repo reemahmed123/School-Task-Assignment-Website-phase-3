@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Task</title>
+    <link rel="stylesheet" href="{% static 'css/add_task.css' %}">
+</head>
+<body>
+    <h1>Edit the required field</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <label for="taskTitle">New Task Title:</label>
+            <input type="text" id="taskTitle" name="taskTitle" value="{{task_title}}">
+        </div>
+        <br>
+
+        <div>
+            <label for="teacherName">New Teacher Name:</label>
+            <input type="text" id="teacherName" name="teacherName" value="{{teacher_name}}">
+        </div>
+        <br>
+
+        <div>
+            <label for="priority">Priority:</label>
+            <select id="priority" name="priority">
+                <option value="Low" {% if priority == 'Low' %} selected {% endif %}>Low</option>
+                <option value="Medium" {% if priority == 'Medium' %} selected {% endif %}>Medium</option>
+                <option value="High" {% if priority == 'High' %} selected {% endif %}>High</option>
+            </select>
+        </div>
+        <br>
+
+        <div>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" placeholder="write your description">{{description}}</textarea>
+        </div>
+        <br>
+        <div class="btnAdd">
+        <input id="sbmt" type="submit" value="Edit Task">
+        </div>
+    </form>
+</body>
+</html>
